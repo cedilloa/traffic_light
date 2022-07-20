@@ -1,24 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
 
 //create your first component
 const Home = () => {
+	let [activeLigth, setActiveLigth] = useState("")
+	let handleLigth = (color) => {
+		setActiveLigth (color)
+	}
 	return (
-		<div className="text-center">
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
+		<div  className="container m-auto d-flex aling-items-center flex-column">
+			<div className="mx-auto bg-dark" style={{width:'25px', height:'100px'}}>|</div>
+			<div className="semaphore bg-dark" style={{margin: '0 auto'}}>
+				<div className={`ligth bg-danger ${activeLigth === "red" ? "active": ""}`} onClick= {()=> handleLigth("red")} ></div>
+				<div className={`ligth bg-warning ${activeLigth === "yellow" ? "active": ""}`} onClick= {()=> handleLigth("yellow")}></div>
+				<div className={`ligth bg-success ${activeLigth === "green" ? "active": ""}`} onClick= {()=> handleLigth("green")}></div>
+			</div>
+			
 		</div>
 	);
 };
